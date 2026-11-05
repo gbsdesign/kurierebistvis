@@ -12,222 +12,184 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0E1014; --card:#171A21; --card2:#1F232C; --line:#2A2F3A;
-  --text:#F2F4F7; --muted:#9AA3B2; --accent:#FFB020; --accent-ink:#1A1206;
-  --green:#2BD47D; --red:#FF4D4F; --blue:#4DA3FF;
-  --shadow:0 8px 24px rgba(0,0,0,.35);
-  --r:18px;
+  --bg:#0E1014; --card:#171A21; --card2:#20242D; --line:#272C36;
+  --text:#F2F4F7; --muted:#8E97A6; --accent:#FFB020; --accent-ink:#1A1206;
+  --green:#2BD47D; --red:#FF4D4F;
+  --r:16px;
 }
 html[data-theme="light"]{
-  --bg:#F4F5F7; --card:#FFFFFF; --card2:#F0F2F5; --line:#E2E5EA;
-  --text:#14161A; --muted:#5F6878; --accent:#F59E0B; --accent-ink:#1A1206;
-  --green:#16A34A; --red:#E5383B; --blue:#2563EB;
-  --shadow:0 6px 18px rgba(20,22,26,.08);
+  --bg:#F3F4F6; --card:#FFFFFF; --card2:#F1F3F6; --line:#E3E6EB;
+  --text:#14161A; --muted:#677083; --accent:#F59E0B; --accent-ink:#1A1206;
+  --green:#15993F; --red:#E5383B;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 [hidden]{display:none!important}
 html,body{margin:0;background:var(--bg);color:var(--text)}
-body{font-family:"Noto Sans Georgian",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.45;
+body{font-family:"Noto Sans Georgian",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.4;
   padding:env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);min-height:100vh}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
-a{color:inherit}
+a{color:inherit;text-decoration:none}
 .num{font-variant-numeric:tabular-nums}
-
-/* top bar */
-.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
-  padding:12px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px)}
-.brand{display:flex;align-items:center;gap:10px}
-.brand img{width:36px;height:36px;border-radius:10px}
-.brand b{display:block;font-size:17px;font-weight:700}
-.brand small{display:block;color:var(--muted);font-size:13px}
-.icon-btn{width:44px;height:44px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center}
-.icon-btn svg{width:22px;height:22px}
-
-main{padding:4px 16px calc(110px + env(safe-area-inset-bottom));max-width:560px;margin:0 auto}
-h2.page{font-size:22px;margin:6px 2px 4px;font-weight:800}
-p.lead{margin:0 2px 14px;color:var(--muted);font-size:14px}
-
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
-.card-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
-.card-h h3{margin:0;font-size:17px;font-weight:700}
 .muted{color:var(--muted)}
 .small{font-size:13px}
 .grow{flex:1;min-width:0}
-.row{display:flex;align-items:center;gap:12px}
+.row{display:flex;align-items:center;gap:10px}
 
-/* rate */
-.rate{display:flex;align-items:center;gap:10px}
-.rate .lbl{flex:1;font-weight:600}
-.stepper{display:flex;align-items:center;background:var(--card2);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.stepper button{width:42px;height:56px;border:0;background:transparent;font-size:24px;font-weight:600;color:var(--muted)}
-.stepper input{width:58px;height:56px;border:0;background:transparent;text-align:center;font-size:26px;font-weight:800;outline:none}
-.stepper .cur{padding-right:12px;font-weight:700;color:var(--muted)}
+/* ზედა ზოლი */
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;padding:10px 16px;
+  background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px)}
+.top img{width:32px;height:32px;border-radius:9px}
+.top b{display:block;font-size:16px;font-weight:700;line-height:1.2}
+.top small{display:block;color:var(--muted);font-size:12px}
+.icon-btn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;flex:none}
+.icon-btn svg{width:20px;height:20px}
 
-/* today */
-.today-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 12px}
-.stat{background:var(--card2);border-radius:14px;padding:12px}
-.stat .k{font-size:13px;color:var(--muted)}
-.stat .v{font-size:24px;font-weight:800;margin-top:2px}
-.stat .v.green{color:var(--green)}
-.bar{height:12px;border-radius:99px;background:var(--card2);overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#FFD166);border-radius:99px;transition:width .4s}
-.bar-meta{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:6px}
-.fuel{display:flex;align-items:center;gap:10px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
-.fuel input.f{width:96px;flex:none;text-align:center;font-weight:700}
+main{padding:2px 14px calc(96px + env(safe-area-inset-bottom));max-width:540px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:10px}
+.head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px}
+.head h3{margin:0;font-size:16px;font-weight:700}
+.page-h{display:flex;align-items:center;justify-content:space-between;margin:4px 2px 10px}
+.page-h h2{margin:0;font-size:20px;font-weight:800}
+.add{height:36px;padding:0 14px;border-radius:99px;border:0;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:14px;flex:none}
+.link{border:0;background:none;color:var(--accent);font-weight:600;padding:4px 0;font-size:14px}
 
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:54px;border-radius:16px;border:0;
-  font-weight:700;font-size:16px;text-decoration:none;background:var(--card2);color:var(--text);padding:0 16px}
-.btn.primary{background:var(--accent);color:var(--accent-ink)}
+/* მთავარი: დღის ბარათი */
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.lbl{font-size:13px;color:var(--muted);font-weight:600}
+.money{font-size:34px;font-weight:800;line-height:1.1;color:var(--green);margin:2px 0}
+.stepper{display:flex;align-items:center;background:var(--card2);border-radius:12px;margin-top:4px}
+.stepper button{width:36px;height:44px;border:0;background:transparent;font-size:20px;font-weight:700;color:var(--muted)}
+.stepper input{width:44px;height:44px;border:0;background:transparent;text-align:center;font-size:20px;font-weight:800;outline:none;padding:0}
+.stepper span{font-weight:700;color:var(--muted);font-size:14px}
+.bar{height:8px;border-radius:99px;background:var(--card2);overflow:hidden;margin-top:12px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .4s}
+.bar-meta{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-top:4px}
+.bar-meta .link{font-size:13px}
+.actions{display:flex;gap:8px;margin-top:10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:50px;border-radius:14px;border:0;
+  font-weight:700;font-size:16px;background:var(--card2);color:var(--text);padding:0 14px}
 .btn.go{background:var(--green);color:#04210F}
 .btn.stop{background:var(--red);color:#fff}
-.btn.ghost{background:transparent;border:1px dashed var(--line);color:var(--muted);min-height:48px}
-.btn.outline{background:transparent;border:2px solid var(--red);color:var(--red)}
-.btn.danger{background:var(--red);color:#fff}
+.btn.red{background:var(--red);color:#fff}
+.btn.side{width:auto;flex:none;font-size:14px;color:var(--muted)}
 .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
-.btn-row{display:flex;gap:10px}
-.btn-row .btn{flex:1}
-.link-btn{border:0;background:none;color:var(--accent);font-weight:600;padding:6px 0;font-size:14px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.mini{background:var(--card2);border-radius:12px;padding:8px 10px;display:flex;align-items:center;gap:6px;min-height:50px}
+.mini input{width:52px;border:0;background:transparent;font-size:17px;font-weight:800;outline:none;padding:0;text-align:right}
+.mini input::placeholder{color:var(--muted);opacity:.7}
+.mini b{color:var(--accent);white-space:nowrap}
+.rest{margin-top:10px;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--accent) 15%,var(--card2));font-size:14px}
+.strip{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);margin-bottom:10px;font-size:14px}
+.strip .e{font-size:22px}
 
-input.f,select.f,textarea.f{width:100%;height:52px;padding:0 14px;border-radius:14px;border:1px solid var(--line);background:var(--card2);font-size:17px;outline:none}
-textarea.f{height:auto;min-height:84px;padding:12px 14px;resize:vertical}
-input.f:focus,select.f:focus,textarea.f:focus{border-color:var(--accent)}
+/* სიები */
+.rows{display:flex;flex-direction:column}
+.r{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line);cursor:pointer;min-height:54px}
+.rows .r:first-child{border-top:0}
+.r .t{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.r .s{font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.r .s.warn{color:var(--red)}
+.r .s.two{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.check{width:28px;height:28px;flex:none;border-radius:50%;border:2px solid var(--line);background:transparent;display:grid;place-items:center;color:transparent;font-weight:800;font-size:14px;padding:0}
+.r.paid{opacity:.5}
+.r.paid .check{background:var(--green);border-color:var(--green);color:#04210F}
+.r.paid .t{text-decoration:line-through}
+.pill{flex:none;font-weight:800;font-size:14px;padding:5px 9px;border-radius:9px;white-space:nowrap;background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+html[data-theme="light"] .pill{color:#995800}
+.pill.green{background:color-mix(in srgb,var(--green) 16%,transparent);color:var(--green)}
+.pill.gray{background:var(--card2);color:var(--muted)}
+.total{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding:10px 12px;border-radius:12px;background:var(--card2);font-size:14px}
+.total b{font-size:16px}
+.e-ic{width:38px;height:38px;flex:none;border-radius:11px;background:var(--card2);display:grid;place-items:center;font-size:19px}
+.empty{text-align:center;color:var(--muted);padding:18px 8px;font-size:14px}
+details summary{list-style:none;cursor:pointer;color:var(--muted);font-size:13px;padding:8px 0 0}
+details summary::-webkit-details-marker{display:none}
 
-/* expenses */
-.list{display:flex;flex-direction:column;gap:8px}
-.item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:14px;background:var(--card2);border:1px solid transparent}
-.item .t{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.item .sub{font-size:13px;color:var(--muted);margin-top:1px}
-.item .sub.warn{color:var(--red)}
-.check{width:34px;height:34px;flex:none;border-radius:50%;border:2px solid var(--line);background:transparent;display:grid;place-items:center;color:transparent;font-weight:800}
-.item.paid{opacity:.55}
-.item.paid .check{background:var(--green);border-color:var(--green);color:#04210F}
-.item.paid .t{text-decoration:line-through}
-.hours{flex:none;font-weight:800;font-size:15px;background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent);padding:7px 10px;border-radius:10px;white-space:nowrap}
-html[data-theme="light"] .hours{color:#9A5B00}
-.total{margin-top:12px;padding:14px;border-radius:14px;background:color-mix(in srgb,var(--accent) 12%,var(--card2))}
-.total .big{font-size:20px;font-weight:800}
-.hint{font-size:13px;color:var(--muted);background:var(--card2);border-radius:12px;padding:10px 12px;margin-bottom:10px}
-details.paid-box{margin-top:10px}
-details.paid-box summary{cursor:pointer;color:var(--muted);font-size:14px;padding:6px 2px;list-style:none}
-details.paid-box summary::-webkit-details-marker{display:none}
-details.paid-box .list{margin-top:6px}
-
-/* calc */
-.calc{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.calc .box{background:var(--card2);border-radius:14px;padding:12px}
-.calc label{font-size:13px;color:var(--muted)}
-.calc input{width:100%;border:0;background:transparent;font-size:24px;font-weight:800;outline:none;padding:2px 0}
-.calc .res{font-size:14px;font-weight:600;color:var(--accent)}
-
-/* week */
-.week{display:flex;align-items:flex-end;gap:8px;height:120px;margin:6px 0 8px}
-.week .d{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px}
-.week .col{width:100%;max-width:34px;border-radius:8px 8px 4px 4px;background:var(--card2);position:relative;min-height:4px}
-.week .col.has{background:var(--accent)}
-.week .col.today{outline:2px solid var(--accent);outline-offset:2px}
-.week .h{font-size:11px;color:var(--muted)}
-.week .l{font-size:12px;color:var(--muted)}
-
-/* chips */
-.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;scrollbar-width:none}
+/* ჩიპები */
+.chips{display:flex;gap:6px;overflow-x:auto;margin:0 0 10px;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex:none;height:42px;padding:0 16px;border-radius:99px;border:1px solid var(--line);background:var(--card);font-weight:600;font-size:15px;white-space:nowrap}
-.chip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:4px;margin-bottom:12px}
-.seg button{height:46px;border:0;border-radius:12px;background:transparent;font-weight:700;color:var(--muted)}
+.chip{flex:none;height:36px;padding:0 13px;border-radius:99px;border:1px solid var(--line);background:var(--card);font-weight:600;font-size:14px;white-space:nowrap}
+.chip.on{background:var(--text);border-color:var(--text);color:var(--bg)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:3px;margin-bottom:10px}
+.seg button{height:40px;border:0;border-radius:11px;background:transparent;font-weight:700;color:var(--muted);font-size:14px}
 .seg button.on{background:var(--card2);color:var(--text)}
 
-/* discount / job cards */
-.disc{display:flex;gap:12px;align-items:center;cursor:pointer}
-.ic{width:48px;height:48px;flex:none;border-radius:14px;background:var(--card2);display:grid;place-items:center;font-size:24px}
-.pct{flex:none;min-width:64px;text-align:center;font-weight:800;font-size:20px;padding:10px 8px;border-radius:14px;background:color-mix(in srgb,var(--green) 16%,transparent);color:var(--green)}
-.pct.unk{background:var(--card2);color:var(--muted);font-size:13px;font-weight:700;line-height:1.2}
-.ttl{font-weight:700;font-size:16px}
-.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--card2);color:var(--muted);vertical-align:middle;margin-left:4px}
-.tag.warn{background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent)}
-.note{font-size:13px;color:var(--muted);margin-top:4px}
-.job .pay{font-weight:800;color:var(--green);font-size:17px}
-.job .meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:var(--muted);margin:6px 0 10px}
-.empty{text-align:center;color:var(--muted);padding:26px 12px}
-.empty .e{font-size:38px}
-
 /* SOS */
-.sos-hero{background:radial-gradient(120% 120% at 50% 0%,color-mix(in srgb,var(--red) 30%,var(--card)) 0%,var(--card) 70%);border:1px solid color-mix(in srgb,var(--red) 40%,var(--line));border-radius:24px;padding:20px 16px;text-align:center;margin-bottom:12px}
-.sos-ring{width:96px;height:96px;margin:0 auto 10px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:28px;font-weight:800;box-shadow:0 0 0 10px color-mix(in srgb,var(--red) 22%,transparent),0 0 0 22px color-mix(in srgb,var(--red) 10%,transparent)}
-.sos-hero h2{margin:8px 0 2px;font-size:21px}
-.probs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.prob{min-height:56px;border-radius:14px;border:1px solid var(--line);background:var(--card2);font-weight:600;display:flex;align-items:center;gap:8px;padding:0 12px;text-align:left}
-.prob .e{font-size:22px}
+.probs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.prob{border-radius:12px;border:1px solid var(--line);background:var(--card2);font-weight:600;font-size:12.5px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:62px;justify-content:center}
+.prob .e{font-size:21px}
 .prob.on{border:2px solid var(--red);background:color-mix(in srgb,var(--red) 14%,var(--card2))}
-.loc{display:flex;align-items:center;gap:12px}
-.dot{width:12px;height:12px;border-radius:50%;background:var(--muted);flex:none}
-.dot.ok{background:var(--green);box-shadow:0 0 0 6px color-mix(in srgb,var(--green) 20%,transparent)}
+.loc{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:var(--muted)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--muted);flex:none}
+.dot.ok{background:var(--green)}
 .dot.bad{background:var(--red)}
-.call{width:52px;height:52px;flex:none;border-radius:16px;background:var(--green);color:#04210F;display:grid;place-items:center;text-decoration:none}
-.call svg{width:24px;height:24px}
-.avatar{width:44px;height:44px;flex:none;border-radius:50%;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;font-weight:800;color:var(--accent)}
-.alert{border-radius:14px;padding:12px 14px;background:color-mix(in srgb,var(--red) 14%,var(--card2));color:var(--text);font-size:14px;margin-top:10px}
-.soon{display:flex;gap:12px;align-items:center;border-style:dashed}
+.sos-btn{min-height:60px;font-size:17px;margin-bottom:8px}
+.help-btn{margin-bottom:10px;border:1px solid var(--line);background:var(--card)}
+.call{width:42px;height:42px;flex:none;border-radius:12px;background:var(--green);color:#04210F;display:grid;place-items:center}
+.call svg{width:20px;height:20px}
+.av{width:38px;height:38px;flex:none;border-radius:50%;background:var(--card2);display:grid;place-items:center;font-weight:800;color:var(--accent)}
+.alert{border-radius:12px;padding:10px 12px;background:color-mix(in srgb,var(--red) 15%,var(--card2));font-size:14px;margin-top:10px}
+.p112{height:36px;padding:0 12px;border-radius:99px;border:1.5px solid var(--red);color:var(--red);font-weight:700;font-size:14px;display:flex;align-items:center;gap:6px}
 
-/* books */
-.quote{background:linear-gradient(140deg,color-mix(in srgb,var(--accent) 22%,var(--card)) 0%,var(--card) 65%)}
-.quote .q{font-size:20px;line-height:1.5;font-weight:600;margin:4px 0 10px}
-.quote .a{color:var(--muted);font-size:14px}
-.work{display:flex;gap:12px;align-items:center;cursor:pointer}
-.work .ic{font-size:22px;font-weight:800;color:var(--accent)}
-.src{font-size:12px;color:var(--muted);text-align:center;margin-top:8px}
-.src a{color:var(--muted)}
+/* წიგნები */
+.quote .q{font-size:17px;line-height:1.5;font-weight:600;margin:6px 0 6px}
+.quote .a{color:var(--muted);font-size:13px}
+.qb{width:36px;height:36px;border-radius:10px;border:0;background:var(--card2);font-size:15px}
+.src{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+.src a{text-decoration:underline}
 
-/* reader */
+/* კითხვა */
 #reader{position:fixed;inset:0;z-index:60;background:var(--bg);display:flex;flex-direction:column}
-.r-top{display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top)) 12px 10px;border-bottom:1px solid var(--line);background:var(--bg)}
-.r-top .ttl{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.r-body{flex:1;overflow-y:auto;padding:20px 20px calc(40px + env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch}
+.r-top{display:flex;align-items:center;gap:8px;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;border-bottom:1px solid var(--line)}
+.r-top .t{flex:1;min-width:0;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.r-body{flex:1;overflow-y:auto;padding:18px 20px calc(36px + env(safe-area-inset-bottom))}
 .r-inner{max-width:620px;margin:0 auto}
-.r-inner h1{font-size:1.5em;margin:0 0 2px}
-.r-inner .by{color:var(--muted);margin-bottom:22px}
-.stanza{margin:0 0 1.2em;line-height:1.7}
-.r-inner h3{margin:1.6em 0 .6em;color:var(--accent);text-align:center}
+.r-inner h1{font-size:1.4em;margin:0}
+.r-inner .by{color:var(--muted);margin:2px 0 20px;font-size:.85em}
+.stanza{margin:0 0 1.1em;line-height:1.7}
+.r-inner h3{margin:1.5em 0 .6em;color:var(--accent);text-align:center}
 .r-inner p{margin:0 0 1em;line-height:1.75}
-.r-end{text-align:center;color:var(--muted);margin-top:28px;font-size:14px}
+.r-end{text-align:center;color:var(--muted);margin-top:24px;font-size:13px}
 
-/* bottom nav */
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(12px);
-  border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
-.tab{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;color:var(--muted);font-size:11.5px;font-weight:600;min-height:58px;justify-content:center}
-.tab svg{width:24px;height:24px}
+/* ქვედა მენიუ */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:color-mix(in srgb,var(--card) 95%,transparent);backdrop-filter:blur(12px);
+  border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:4px 4px calc(4px + env(safe-area-inset-bottom))}
+.tab{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:var(--muted);font-size:11px;font-weight:600;min-height:54px;justify-content:center}
+.tab svg{width:23px;height:23px}
 .tab.on{color:var(--accent)}
-.tab.sos{position:relative}
-.tab.sos .sosb{width:62px;height:62px;margin-top:-30px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:800;font-size:17px;
-  border:5px solid var(--bg);box-shadow:0 6px 18px color-mix(in srgb,var(--red) 45%,transparent)}
+.tab .sosb{width:54px;height:54px;margin-top:-24px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px;border:4px solid var(--bg)}
 .tab.sos.on{color:var(--red)}
 
-/* sheet */
+/* ქვედა ფანჯარა */
 .sheet-wrap{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55)}
-.sheet{width:100%;max-width:560px;max-height:92vh;overflow-y:auto;background:var(--card);border-radius:24px 24px 0 0;padding:10px 16px calc(18px + env(safe-area-inset-bottom));animation:up .22s ease-out}
-@keyframes up{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
-.grab{width:44px;height:5px;border-radius:9px;background:var(--line);margin:4px auto 12px}
-.sheet h3{margin:0 0 14px;font-size:19px}
-.field{margin-bottom:12px}
-.field label{display:block;font-size:14px;color:var(--muted);margin:0 0 6px 2px;font-weight:600}
-.sheet .btn-row{margin-top:6px}
-.switch{display:flex;background:var(--card2);border-radius:14px;padding:4px}
-.switch button{flex:1;height:44px;border:0;border-radius:11px;background:transparent;font-weight:700;color:var(--muted)}
-.switch button.on{background:var(--card);color:var(--text);box-shadow:var(--shadow)}
+.sheet{width:100%;max-width:540px;max-height:90vh;overflow-y:auto;background:var(--card);border-radius:22px 22px 0 0;padding:8px 16px calc(16px + env(safe-area-inset-bottom));animation:up .2s ease-out}
+@keyframes up{from{transform:translateY(30px);opacity:.5}to{transform:none;opacity:1}}
+.grab{width:40px;height:5px;border-radius:9px;background:var(--line);margin:4px auto 12px}
+.sheet h3{margin:0 0 12px;font-size:18px}
+.field{margin-bottom:10px}
+.field label{display:block;font-size:13px;color:var(--muted);margin:0 0 5px 2px;font-weight:600}
+.f{width:100%;height:48px;padding:0 12px;border-radius:12px;border:1px solid var(--line);background:var(--card2);font-size:16px;outline:none}
+textarea.f{height:auto;min-height:72px;padding:10px 12px;resize:vertical}
+.f:focus{border-color:var(--accent)}
+.btn-row{display:flex;gap:8px;margin-top:4px}
+.btn-row .btn{flex:1}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.plain{background:transparent;color:var(--muted);min-height:44px}
+.switch{display:flex;background:var(--card2);border-radius:12px;padding:3px}
+.switch button{flex:1;height:42px;border:0;border-radius:10px;background:transparent;font-weight:700;color:var(--muted)}
+.switch button.on{background:var(--card);color:var(--text)}
 
-#toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);opacity:0;z-index:99;
-  background:var(--text);color:var(--bg);padding:12px 18px;border-radius:14px;font-weight:600;font-size:15px;transition:.25s;pointer-events:none;max-width:90vw;text-align:center}
+#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(16px);opacity:0;z-index:99;
+  background:var(--text);color:var(--bg);padding:10px 16px;border-radius:12px;font-weight:600;font-size:14px;transition:.25s;pointer-events:none;max-width:90vw;text-align:center}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 <body>
 
 <header class="top">
-  <div class="brand">
-    <img src="icon.svg" alt="">
-    <div><b>კურიერის ჯიბე</b><small id="today-label"></small></div>
-  </div>
+  <img src="icon.svg" alt="">
+  <div class="grow"><b>კურიერის ჯიბე</b><small id="today-label"></small></div>
   <button class="icon-btn" data-action="open-settings" aria-label="პარამეტრები">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></svg>
   </button>
@@ -237,22 +199,14 @@ details.paid-box .list{margin-top:6px}
 
 <nav class="tabs" aria-label="მენიუ">
   <button class="tab" data-tab="home">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
-    მთავარი
-  </button>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>მთავარი</button>
   <button class="tab" data-tab="discounts">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.6" fill="currentColor"/></svg>
-    ფასდაკლება
-  </button>
-  <button class="tab sos" data-tab="sos"><span class="sosb">SOS</span>დახმარება</button>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.6" fill="currentColor"/></svg>ფასდაკლება</button>
+  <button class="tab sos" data-tab="sos"><span class="sosb">SOS</span></button>
   <button class="tab" data-tab="books">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3z"/><path d="M21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/></svg>
-    წიგნები
-  </button>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3z"/><path d="M21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/></svg>წიგნები</button>
   <button class="tab" data-tab="jobs">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>
-    სამუშაო
-  </button>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>სამუშაო</button>
 </nav>
 
 <div id="sheet" class="sheet-wrap" hidden></div>
@@ -267,7 +221,6 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 const MONTHS = ['იანვარი','თებერვალი','მარტი','აპრილი','მაისი','ივნისი','ივლისი','აგვისტო','სექტემბერი','ოქტომბერი','ნოემბერი','დეკემბერი'];
 const MON_S = ['იან','თებ','მარ','აპრ','მაი','ივნ','ივლ','აგვ','სექ','ოქტ','ნოე','დეკ'];
 const DAYS = ['კვირა','ორშაბათი','სამშაბათი','ოთხშაბათი','ხუთშაბათი','პარასკევი','შაბათი'];
-const DAY_S = ['კვი','ორშ','სამ','ოთხ','ხუთ','პარ','შაბ'];
 const pad = n => String(n).padStart(2, '0');
 const dayKey = (d = new Date()) => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
 const money = x => { const v = Math.round((+x || 0) * 100) / 100; return (Number.isInteger(v) ? v : v.toFixed(2)) + ' ₾'; };
@@ -278,43 +231,43 @@ function fmtH(hours){
   if (h) return `${h} სთ`;
   return `${m} წთ`;
 }
-function clock(min){
-  const s = Math.floor(min * 60); return `${Math.floor(s/3600)}:${pad(Math.floor(s%3600/60))}:${pad(s%60)}`;
-}
+const clock = min => { const s = Math.floor(min * 60); return `${Math.floor(s/3600)}:${pad(Math.floor(s%3600/60))}:${pad(s%60)}`; };
 function toast(msg){
   const t = $('#toast'); t.textContent = msg; t.classList.add('show');
   clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 2200);
 }
 const ICON_PHONE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>';
 
-/* ============ მონაცემები (ტელეფონში ინახება) ============ */
+/* ============ მონაცემები (ინახება ტელეფონში) ============ */
 const KEY = 'kurieris-jibe-v1';
+const TBC = { id: 'tbc-glovo', name: 'Glovo-ს პარტნიორის ბარათი (თიბისი)', cat: 'money', pct: '', addr: '',
+  note: 'Glovo-ს კურიერებს: ფასდაკლება და ქეშბექი სამუშაოსთვის საჭირო ნივთებზე. ბარათი Glovo Rider აპიდან იწერება.' };
 const DEFAULT = () => ({
-  rate: 15, goal: 8, name: '', theme: 'dark', font: 19,
+  v: 2, rate: 15, goal: 8, name: '', theme: 'dark', font: 19,
   expenses: [
-    { id: uid(), name: 'ნიკას ვალი', amount: 100, due: '', paid: false, sample: true },
-    { id: uid(), name: 'ბანკი', amount: 300, due: '', paid: false, sample: true },
-    { id: uid(), name: 'ქირა', amount: 400, due: '', paid: false, sample: true },
+    { id: uid(), name: 'ნიკას ვალი', amount: 100, due: '', paid: false },
+    { id: uid(), name: 'ბანკი', amount: 300, due: '', paid: false },
+    { id: uid(), name: 'ქირა', amount: 400, due: '', paid: false },
   ],
-  shift: null,          // { start: ms } — როცა ცვლა მიდის
-  log: {},              // 'YYYY-MM-DD': { min, earn, fuel }
+  shift: null, log: {},
   discounts: [
-    { id: uid(), name: 'ბინგო შაურმა', cat: 'food', pct: '', addr: '', note: 'კურიერებს ფასდაკლება აქვთ. პროცენტი დასაზუსტებელია.' },
-    { id: uid(), name: 'ავტო-მოტო სერვისი', cat: 'service', pct: 10, addr: 'მისამართი აქ ჩაიწერება', note: '', sample: true },
-    { id: uid(), name: 'ტელეფონის შეკეთება', cat: 'phone', pct: 15, addr: '', note: '', sample: true },
+    { id: 'bingo', name: 'ბინგო შაურმა', cat: 'food', pct: '', addr: '', note: 'კურიერებს ფასდაკლება აქვთ. პროცენტი დასაზუსტებელია.' },
+    { ...TBC },
   ],
-  jobs: [
-    { id: uid(), type: 'vac', title: 'კურიერი სრულ განაკვეთზე', pay: 'საათში 12–15 ₾', place: 'ვაკე-საბურთალო', time: 'ყოველდღე, 10:00–19:00', phone: '', note: '', sample: true },
-    { id: uid(), type: 'once', title: 'ამანათის მიტანა რუსთავში', pay: '40 ₾', place: 'თბილისი → რუსთავი', time: 'დღეს, 18:00-მდე', phone: '', note: '', sample: true },
-    { id: uid(), type: 'once', title: 'ავეჯის გადატანა', pay: '50 ₾', place: 'გლდანი', time: '≈ 2 საათი', phone: '', note: '', sample: true },
-  ],
-  contacts: [],
-  read: {}, last: null, phraseShift: 0,
+  jobs: [], contacts: [], read: {}, last: null, phraseShift: 0,
 });
-let S;
-try { S = Object.assign(DEFAULT(), JSON.parse(localStorage.getItem(KEY) || 'null') || {}); }
-catch (e) { S = DEFAULT(); }
+let S, saved = null;
+try { saved = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+S = Object.assign(DEFAULT(), saved || {});
+if (saved && (saved.v || 1) < 2) {            // ძველი ვერსიიდან: ნიმუშების მოშლა
+  S.discounts = (S.discounts || []).filter(d => !d.sample);
+  if (!S.discounts.some(d => d.id === TBC.id)) S.discounts.push({ ...TBC });
+  S.jobs = (S.jobs || []).filter(j => !j.sample);
+  (S.expenses || []).forEach(e => delete e.sample);
+  S.v = 2;
+}
 function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+save();
 const todayLog = () => (S.log[dayKey()] ||= { min: 0, earn: 0, fuel: 0 });
 
 /* ============ ნავიგაცია ============ */
@@ -322,73 +275,58 @@ const TABS = ['home', 'discounts', 'sos', 'books', 'jobs'];
 let tab = TABS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'home';
 function go(t){
   tab = t;
-  if (location.hash.slice(1) !== t) { try { history.replaceState(null, '', '#' + t); } catch (e) { location.hash = t; } }
+  if (location.hash.slice(1) !== t) { try { history.replaceState(null, '', '#' + t); } catch (e) {} }
   document.querySelectorAll('.tab').forEach(b => b.classList.toggle('on', b.dataset.tab === t));
   render(); window.scrollTo(0, 0);
-  if (t === 'sos') findLocation();
+  if (t === 'sos' && loc.state !== 'ok') findLocation();
 }
 window.addEventListener('hashchange', () => { const t = location.hash.slice(1); if (TABS.includes(t) && t !== tab) go(t); });
-
 function render(){
-  const app = $('#app');
-  if (tab === 'home') app.innerHTML = viewHome();
-  if (tab === 'discounts') app.innerHTML = viewDiscounts();
-  if (tab === 'sos') app.innerHTML = viewSos();
-  if (tab === 'books') app.innerHTML = viewBooks();
-  if (tab === 'jobs') app.innerHTML = viewJobs();
-  if (tab === 'home') tick();
+  const v = { home: viewHome, discounts: viewDiscounts, sos: viewSos, books: viewBooks, jobs: viewJobs }[tab];
+  $('#app').innerHTML = v();
+  if (tab === 'home') { tick(); renderWeather(); }
 }
 
 /* ============ 1. მთავარი ============ */
 function viewHome(){
   const L = todayLog();
   return `
-  <div class="card">
-    <div class="rate">
-      <div class="lbl">1 საათში ვშოულობ</div>
-      <div class="stepper">
-        <button data-action="rate-dec" aria-label="ნაკლები">−</button>
-        <input id="rate" class="num" type="number" inputmode="decimal" min="0" step="0.5" value="${S.rate}" aria-label="საათის ფასი">
-        <span class="cur">₾</span>
-        <button data-action="rate-inc" aria-label="მეტი">+</button>
+  <section class="card">
+    <div class="hero-top">
+      <div class="grow">
+        <div class="lbl">დღეს გამოვიმუშავე</div>
+        <div class="money num" id="t-earn">0 ₾</div>
+        <div class="small muted num"><span id="t-clock">0:00:00</span> · სუფთა <b id="t-net" style="color:var(--text)">0 ₾</b></div>
+      </div>
+      <div>
+        <div class="lbl" style="text-align:center">1 საათში</div>
+        <div class="stepper">
+          <button data-action="rate-dec" aria-label="ნაკლები">−</button>
+          <input id="rate" class="num" type="number" inputmode="decimal" min="0" step="0.5" value="${S.rate}" aria-label="1 საათში რამდენს ვშოულობ">
+          <span>₾</span>
+          <button data-action="rate-inc" aria-label="მეტი">+</button>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="card">
-    <div class="card-h"><h3>დღეს</h3><button class="link-btn" data-action="add-time">+ ხელით ჩაწერა</button></div>
-    <div class="today-grid">
-      <div class="stat"><div class="k">ნამუშევარი</div><div class="v num" id="t-clock">0:00:00</div></div>
-      <div class="stat"><div class="k">გამომუშავებული</div><div class="v num green" id="t-earn">0 ₾</div></div>
-    </div>
     <div class="bar"><i id="t-bar"></i></div>
-    <div class="bar-meta"><span id="t-left"></span><button class="link-btn" style="padding:0" data-action="edit-goal">მიზანი: ${S.goal} სთ ✎</button></div>
-    <div style="margin-top:14px" id="shift-btn"></div>
-    <div class="fuel">
-      <span style="font-size:22px">⛽</span>
-      <div class="grow"><b>საწვავი დღეს</b><div class="muted small">სუფთა: <b class="num" id="t-net">0 ₾</b></div></div>
-      <input id="fuel" class="f num" type="number" inputmode="decimal" min="0" placeholder="0" value="${L.fuel || ''}" aria-label="საწვავის ხარჯი">
+    <div class="bar-meta"><span id="t-left"></span><button class="link" data-action="edit-goal">მიზანი ${S.goal} სთ</button></div>
+    <div id="rest"></div>
+    <div class="actions">
+      <div class="grow" id="shift-btn"></div>
+      <button class="btn side" data-action="add-time">+ საათი</button>
     </div>
-  </div>
+    <div class="duo">
+      <label class="mini">⛽ <span class="grow small muted">საწვავი</span><input id="fuel" class="num" type="number" inputmode="decimal" min="0" placeholder="0" value="${L.fuel || ''}"><span class="small muted">₾</span></label>
+      <label class="mini">⏱ <input id="c-h" class="num" type="number" inputmode="decimal" min="0" placeholder="8" value="${calcH}" style="text-align:center;width:36px"><span class="small muted">სთ =</span> <b class="num grow" id="c-h-r" style="text-align:right">${money((parseFloat(calcH) || 8) * S.rate)}</b></label>
+    </div>
+  </section>
 
-  <div class="card">
-    <div class="card-h"><h3>ხარჯები და ვალები</h3></div>
+  <div class="strip" id="weather" hidden></div>
+
+  <section class="card">
+    <div class="head"><h3>ვალები და ხარჯები</h3><button class="add" data-action="exp-add">+ დამატება</button></div>
     <div id="exp-box">${viewExpenses()}</div>
-    <button class="btn ghost" style="margin-top:10px" data-action="exp-add">+ ხარჯის დამატება</button>
-  </div>
-
-  <div class="card">
-    <div class="card-h"><h3>სწრაფი გამოთვლა</h3></div>
-    <div class="calc">
-      <div class="box"><label for="c-h">თუ ვიმუშავებ (საათი)</label><input id="c-h" class="num" type="number" inputmode="decimal" placeholder="8"><div class="res" id="c-h-r">→ ${money(8 * S.rate)}</div></div>
-      <div class="box"><label for="c-m">მინდა ვიშოვო (₾)</label><input id="c-m" class="num" type="number" inputmode="decimal" placeholder="100"><div class="res" id="c-m-r">→ ${fmtH(100 / S.rate)}</div></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-h"><h3>ბოლო 7 დღე</h3></div>
-    ${viewWeek()}
-  </div>`;
+  </section>`;
 }
 
 function viewExpenses(){
@@ -399,50 +337,23 @@ function viewExpenses(){
     if (e.due && !e.paid) {
       const d = new Date(e.due + 'T00:00:00'), now = new Date(dayKey() + 'T00:00:00');
       const left = Math.round((d - now) / 864e5);
-      sub += ` · ${d.getDate()} ${MON_S[d.getMonth()]}`;
-      if (left > 0) sub += ` · ${left} დღე დარჩა · დღეში ${fmtH(e.amount / r / left)}`;
-      else if (left === 0) { sub += ' · დღესაა!'; warn = true; }
+      if (left > 0) sub += ` · ${d.getDate()} ${MON_S[d.getMonth()]}-მდე · დღეში ${fmtH(e.amount / r / left)}`;
+      else if (left === 0) { sub += ' · ვადა დღესაა!'; warn = true; }
       else { sub += ' · ვადა გავიდა'; warn = true; }
     }
-    return `<div class="item ${e.paid ? 'paid' : ''}" data-action="exp-edit" data-id="${e.id}">
-      <button class="check" data-action="exp-toggle" data-id="${e.id}" aria-label="${e.paid ? 'გადაუხდელად მონიშვნა' : 'გადახდილად მონიშვნა'}">✓</button>
-      <div class="grow"><div class="t">${esc(e.name)}</div><div class="sub ${warn ? 'warn' : ''}">${sub}</div></div>
-      <div class="hours num">${r ? fmtH(e.amount / r) : '—'}</div>
+    return `<div class="r ${e.paid ? 'paid' : ''}" data-action="exp-edit" data-id="${e.id}">
+      <button class="check" data-action="exp-toggle" data-id="${e.id}" aria-label="${e.paid ? 'გადაუხდელია' : 'გადავიხადე'}">✓</button>
+      <div class="grow"><div class="t">${esc(e.name)}</div><div class="s ${warn ? 'warn' : ''}">${sub}</div></div>
+      <span class="pill num">${r ? fmtH(e.amount / r) : '—'}</span>
     </div>`;
   };
-  const sum = open.reduce((a, e) => a + (+e.amount || 0), 0);
-  const hrs = r ? sum / r : NaN;
+  const sum = open.reduce((a, e) => a + (+e.amount || 0), 0), hrs = r ? sum / r : NaN;
   return `
-    ${S.expenses.some(e => e.sample) ? '<div class="hint">ეს ნიმუშია. შეეხე და შეცვალე, ან წაშალე.</div>' : ''}
-    ${open.length ? `<div class="list">${open.map(row).join('')}</div>` :
-      `<div class="empty"><div class="e">🎉</div>ყველაფერი გადახდილია!</div>`}
-    ${open.length ? `<div class="total">
-      <div class="muted small">სულ დარჩა გადასახდელი</div>
-      <div class="big num">${money(sum)} = ${fmtH(hrs)}</div>
-      <div class="muted small">≈ ${r && S.goal ? Math.ceil(hrs / S.goal) : '—'} სამუშაო დღე (დღეში ${S.goal} სთ)</div>
-    </div>` : ''}
-    ${paid.length ? `<details class="paid-box"><summary>✓ გადახდილი (${paid.length}) ▾</summary><div class="list">${paid.map(row).join('')}</div></details>` : ''}`;
+    ${open.length ? `<div class="rows">${open.map(row).join('')}</div>
+      <div class="total"><span class="muted">სულ ${money(sum)}</span><b class="num">${fmtH(hrs)} სამუშაო</b></div>`
+      : `<div class="empty">${S.expenses.length ? '🎉 ყველაფერი გადახდილია!' : 'ჩაწერე ვალი ან ხარჯი და გეტყვი, რამდენი საათი უნდა იმუშაო.'}</div>`}
+    ${paid.length ? `<details><summary>✓ გადახდილი (${paid.length})</summary><div class="rows">${paid.map(row).join('')}</div></details>` : ''}`;
 }
-
-function viewWeek(){
-  const days = [];
-  for (let i = 6; i >= 0; i--) { const d = new Date(); d.setDate(d.getDate() - i); days.push(d); }
-  const data = days.map(d => {
-    const L = S.log[dayKey(d)] || { min: 0, earn: 0 };
-    let min = L.min, earn = L.earn;
-    if (i_isToday(d) && S.shift) { const live = (Date.now() - S.shift.start) / 6e4; min += live; earn += live / 60 * S.rate; }
-    return { d, min, earn };
-  });
-  const max = Math.max(S.goal * 60, ...data.map(x => x.min)) || 1;
-  const totMin = data.reduce((a, x) => a + x.min, 0), totEarn = data.reduce((a, x) => a + x.earn, 0);
-  return `<div class="week">${data.map(x => `
-      <div class="d"><span class="h num">${x.min >= 1 ? (Math.round(x.min / 6) / 10) : ''}</span>
-        <div class="col ${x.min >= 1 ? 'has' : ''} ${i_isToday(x.d) ? 'today' : ''}" style="height:${Math.max(4, x.min / max * 100)}%"></div>
-        <span class="l">${DAY_S[x.d.getDay()]}</span></div>`).join('')}
-    </div>
-    <div class="row"><div class="grow muted small">სულ 7 დღეში</div><b class="num">${fmtH(totMin / 60)} · ${money(totEarn)}</b></div>`;
-}
-function i_isToday(d){ return dayKey(d) === dayKey(); }
 
 function tick(){
   if (tab !== 'home' || !$('#t-clock')) return;
@@ -452,64 +363,89 @@ function tick(){
   $('#t-clock').textContent = clock(min);
   $('#t-earn').textContent = money(earn);
   $('#t-net').textContent = money(earn - (+L.fuel || 0));
-  const goal = S.goal * 60, pct = goal ? Math.min(100, min / goal * 100) : 0;
-  $('#t-bar').style.width = pct + '%';
+  const goal = S.goal * 60;
+  $('#t-bar').style.width = (goal ? Math.min(100, min / goal * 100) : 0) + '%';
   $('#t-left').textContent = goal ? (min >= goal ? 'მიზანი შესრულდა! 💪' : `დაგრჩა ${fmtH((goal - min) / 60)}`) : '';
-  const sb = $('#shift-btn');
-  const want = S.shift ? 'stop' : 'go';
+  const sb = $('#shift-btn'), want = S.shift ? 'stop' : 'go';
   if (sb.dataset.state !== want) {
     sb.dataset.state = want;
-    sb.innerHTML = S.shift
-      ? '<button class="btn stop" data-action="shift">⏸ ცვლის შეჩერება</button>'
-      : '<button class="btn go" data-action="shift">▶ ცვლის დაწყება</button>';
+    sb.innerHTML = S.shift ? '<button class="btn stop" data-action="shift">⏸ შეჩერება</button>'
+                           : '<button class="btn go" data-action="shift">▶ ცვლის დაწყება</button>';
   }
+  // დასვენების შეხსენება: 3 საათი შეუსვენებლად
+  const since = S.shift ? (Date.now() - (S.shift.rest || S.shift.start)) / 6e4 : 0;
+  const rb = $('#rest'), showRest = S.shift && since >= 180;
+  if (!!rb.firstChild !== !!showRest) rb.innerHTML = showRest
+    ? `<div class="rest"><span style="font-size:20px">☕</span><div class="grow">3 საათია მუშაობ. 10 წუთი დაისვენე, წყალი დალიე.</div><button class="link" data-action="rest-ok">კარგი</button></div>` : '';
 }
 setInterval(tick, 1000);
 
 function addWork(min, when = new Date()){
-  const k = dayKey(when); const L = (S.log[k] ||= { min: 0, earn: 0, fuel: 0 });
+  const L = (S.log[dayKey(when)] ||= { min: 0, earn: 0, fuel: 0 });
   L.min += min; L.earn += min / 60 * S.rate;
 }
 function toggleShift(){
   if (S.shift) {
     const min = (Date.now() - S.shift.start) / 6e4;
-    addWork(min, new Date(S.shift.start));
-    S.shift = null; save(); render();
+    addWork(min, new Date(S.shift.start)); S.shift = null; save(); render();
     toast(`შენახულია: ${fmtH(min / 60)} · ${money(min / 60 * S.rate)}`);
-  } else {
-    S.shift = { start: Date.now() }; save(); tick(); toast('ცვლა დაიწყო. წარმატებები! 🛵');
-  }
+  } else { S.shift = { start: Date.now() }; save(); tick(); toast('ცვლა დაიწყო. გზა მშვიდობისა! 🛵'); }
+}
+
+/* ამინდი (Open-Meteo, უფასო) — წვიმის გაფრთხილება */
+let W = null, calcH = '';
+async function loadWeather(){
+  try {
+    const lat = loc.state === 'ok' ? loc.lat : 41.7151, lng = loc.state === 'ok' ? loc.lng : 44.8271;
+    const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat.toFixed(3)}&longitude=${lng.toFixed(3)}&current=temperature_2m,precipitation,is_day&hourly=precipitation_probability,precipitation&forecast_days=2&timezone=Asia%2FTbilisi`);
+    const d = await r.json(); const now = Date.now();
+    let rainAt = null;
+    for (let i = 0; i < d.hourly.time.length; i++) {
+      const t = new Date(d.hourly.time[i]).getTime();
+      if (t < now - 36e5 || t > now + 6 * 36e5) continue;
+      if (d.hourly.precipitation_probability[i] >= 50 || d.hourly.precipitation[i] >= 0.3) { rainAt = d.hourly.time[i].slice(11, 16); break; }
+    }
+    W = { temp: Math.round(d.current.temperature_2m), raining: d.current.precipitation > 0, rainAt, day: d.current.is_day };
+  } catch (e) { W = null; }
+  renderWeather();
+}
+function renderWeather(){
+  const el = $('#weather'); if (!el) return;
+  if (!W) { el.hidden = true; return; }
+  const [e, txt] = W.raining ? ['🌧', 'ახლა წვიმს. გზა სველია, ნელა იარე.']
+    : W.rainAt ? ['🌦', `წვიმაა მოსალოდნელი ~${W.rainAt}-დან. წვიმის ქურთუკი წაიღე.`]
+    : [W.day ? '☀️' : '🌙', 'უახლოეს 6 საათში წვიმა არ არის.'];
+  el.innerHTML = `<span class="e">${e}</span><b class="num">${W.temp}°</b><span class="grow muted">${txt}</span>`;
+  el.hidden = false;
 }
 
 /* ============ 2. ფასდაკლება ============ */
-const CATS = { food: ['🍔', 'საჭმელი'], service: ['🔧', 'ავტო-მოტო'], phone: ['📱', 'ტელეფონი'], other: ['🏷️', 'სხვა'] };
+const CATS = { food: ['🍔', 'საჭმელი'], service: ['🔧', 'სერვისი'], phone: ['📱', 'ტელეფონი'], money: ['💳', 'ბანკი'], other: ['🏷️', 'სხვა'] };
 let discCat = 'all';
+const noPct = d => d.pct === '' || d.pct == null;
 function viewDiscounts(){
   const list = S.discounts.filter(d => discCat === 'all' || d.cat === discCat);
   return `
-  <h2 class="page">ფასდაკლებები</h2>
-  <p class="lead">სად აქვთ კურიერებს ფასდაკლება. შეეხე ბარათს შესაცვლელად.</p>
+  <div class="page-h"><h2>ფასდაკლება</h2><button class="add" data-action="disc-add">+ დამატება</button></div>
   <div class="chips">
     <button class="chip ${discCat === 'all' ? 'on' : ''}" data-action="disc-cat" data-v="all">ყველა</button>
     ${Object.entries(CATS).map(([k, [i, l]]) => `<button class="chip ${discCat === k ? 'on' : ''}" data-action="disc-cat" data-v="${k}">${i} ${l}</button>`).join('')}
   </div>
-  ${list.length ? list.map(d => `
-    <div class="card disc" data-action="disc-edit" data-id="${d.id}">
-      <div class="ic">${(CATS[d.cat] || CATS.other)[0]}</div>
-      <div class="grow">
-        <div class="ttl">${esc(d.name)}${d.sample ? '<span class="tag">ნიმუში</span>' : ''}${d.pct === '' || d.pct == null ? '<span class="tag warn">დასაზუსტებელი</span>' : ''}</div>
-        ${d.addr ? `<div class="muted small">📍 ${esc(d.addr)}</div>` : ''}
-        ${d.note ? `<div class="note">${esc(d.note)}</div>` : ''}
-      </div>
-      ${d.pct === '' || d.pct == null ? '<div class="pct unk">?<br>%</div>' : `<div class="pct num">−${esc(d.pct)}%</div>`}
-    </div>`).join('') : '<div class="empty"><div class="e">🏷️</div>ამ კატეგორიაში ჯერ არაფერია</div>'}
-  <button class="btn primary" data-action="disc-add">+ ფასდაკლების დამატება</button>`;
+  <section class="card">
+    ${list.length ? `<div class="rows">${list.map(d => `
+      <div class="r" data-action="disc-edit" data-id="${d.id}">
+        <div class="e-ic">${(CATS[d.cat] || CATS.other)[0]}</div>
+        <div class="grow"><div class="t">${esc(d.name)}</div><div class="s two">${esc([d.addr, d.note].filter(Boolean).join(' · '))}</div></div>
+        ${noPct(d) ? '<span class="pill gray">?%</span>' : `<span class="pill green num">−${esc(d.pct)}%</span>`}
+      </div>`).join('')}</div>` : '<div class="empty">აქ ჯერ არაფერია.</div>'}
+  </section>
+  <div class="src">?% — პროცენტი ჯერ დასაზუსტებელია. იცი სხვა ფასდაკლება? დაამატე.</div>`;
 }
 
 /* ============ 3. SOS ============ */
 const PROBS = [
-  ['tire', '🛞', 'საბურავი'], ['engine', '⚙️', 'მოტო/მანქანა გაფუჭდა'], ['battery', '🔋', 'ბატარეა დაჯდა'],
-  ['fuel', '⛽', 'საწვავი გამითავდა'], ['crash', '💥', 'ავარია'], ['other', '❓', 'სხვა'],
+  ['tire', '🛞', 'საბურავი', 'ვულკანიზაცია'], ['engine', '⚙️', 'გაფუჭდა', 'მოტო სერვისი'], ['fuel', '⛽', 'საწვავი', 'ბენზინგასამართი სადგური'],
+  ['battery', '🔋', 'ბატარეა', ''], ['crash', '💥', 'ავარია', 'საავადმყოფო'], ['other', '❓', 'სხვა', ''],
 ];
 let sosProb = null, loc = { state: 'idle' };
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -523,118 +459,91 @@ function smsHref(){
   return `sms:${nums}${isIOS ? '&' : '?'}body=${encodeURIComponent(body)}`;
 }
 function viewSos(){
-  const has = S.contacts.length > 0;
-  const locTxt = { idle: 'ჯერ არ დადგენილა', wait: 'ვეძებ შენს ადგილს…',
-    ok: loc.lat ? `ნაპოვნია (სიზუსტე ≈ ${Math.round(loc.acc || 0)} მ)` : '', bad: 'ვერ მოიძებნა. ჩართე ლოკაცია ტელეფონში.' }[loc.state];
+  const has = S.contacts.length > 0, p = PROBS.find(x => x[0] === sosProb);
+  const locTxt = { idle: 'ლოკაცია: ჯერ არ დადგენილა', wait: 'ლოკაცია: ვეძებ…', ok: 'ლოკაცია ნაპოვნია ✓', bad: 'ლოკაცია ვერ მოიძებნა. ჩართე ტელეფონში.' }[loc.state];
+  const mapQ = p && p[3] ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p[3])}` : '';
   return `
-  <div class="sos-hero">
-    <div class="sos-ring">SOS</div>
-    <h2>დახმარება გჭირდება?</h2>
-    <div class="muted">1. აირჩიე, რა მოხდა &nbsp;·&nbsp; 2. დააჭირე წითელ ღილაკს</div>
-  </div>
-
-  <div class="card">
-    <div class="card-h"><h3>რა მოხდა?</h3></div>
+  <div class="page-h"><h2>🆘 დახმარება</h2><a class="p112" href="tel:112">🚑 112</a></div>
+  <section class="card">
+    <div class="head"><h3>რა მოხდა?</h3></div>
     <div class="probs">${PROBS.map(([k, e, l]) => `<button class="prob ${sosProb === k ? 'on' : ''}" data-action="sos-prob" data-v="${k}"><span class="e">${e}</span>${l}</button>`).join('')}</div>
-    ${sosProb === 'crash' ? '<div class="alert">⚠️ ავარიისას ჯერ დარეკე <b>112</b>-ზე, მერე მიწერე კურიერებს.</div>' : ''}
-  </div>
-
-  <div class="card">
-    <div class="loc">
-      <span class="dot ${loc.state === 'ok' ? 'ok' : loc.state === 'bad' ? 'bad' : ''}"></span>
-      <div class="grow"><b>ჩემი ლოკაცია</b><div class="muted small">${locTxt}</div></div>
-      <button class="link-btn" data-action="sos-loc">განახლება</button>
-    </div>
-  </div>
-
-  <a class="btn danger" style="min-height:64px;font-size:18px;margin-bottom:6px" ${has ? `href="${esc(smsHref())}"` : 'aria-disabled="true"'} id="sos-sms" data-action="sos-sms">📩 SMS ყველა ჩემს კურიერს</a>
-  <p class="muted small" style="margin:0 4px 14px;text-align:center">${has ? 'გაიხსნება SMS, სადაც შენი ადგილი და პრობლემა უკვე წერია.' : 'ჯერ დაამატე კურიერები ქვემოთ 👇'}</p>
-
-  <div class="card">
-    <div class="card-h"><h3>ჩემი კურიერები</h3><span class="muted small">${S.contacts.length}</span></div>
-    ${has ? `<div class="list">${S.contacts.map(c => `
-      <div class="item" data-action="contact-edit" data-id="${c.id}">
-        <div class="avatar">${esc((c.name || '?').trim().charAt(0))}</div>
-        <div class="grow"><div class="t">${esc(c.name)}</div><div class="sub num">${esc(c.phone)}</div></div>
+    <div class="loc"><span class="dot ${loc.state === 'ok' ? 'ok' : loc.state === 'bad' ? 'bad' : ''}"></span><span class="grow">${locTxt}</span>${loc.state !== 'ok' ? '<button class="link" data-action="sos-loc">ძებნა</button>' : ''}</div>
+    ${sosProb === 'crash' ? '<div class="alert">⚠️ ავარიისას ჯერ დარეკე <b>112</b>-ზე.</div>' : ''}
+  </section>
+  <a class="btn red sos-btn" id="sos-sms" data-action="sos-sms" ${has ? `href="${esc(smsHref())}"` : 'aria-disabled="true"'}>📩 SMS ყველა ჩემს კურიერს</a>
+  ${mapQ ? `<a class="btn help-btn" href="${mapQ}" target="_blank" rel="noopener">📍 უახლოესი ${p[3].replace(' სადგური', '')} რუკაზე</a>` : ''}
+  <section class="card">
+    <div class="head"><h3>ჩემი კურიერები</h3><button class="add" data-action="contact-add">+ დამატება</button></div>
+    ${has ? `<div class="rows">${S.contacts.map(c => `
+      <div class="r" data-action="contact-edit" data-id="${c.id}">
+        <div class="av">${esc((c.name || '?').trim().charAt(0))}</div>
+        <div class="grow"><div class="t">${esc(c.name)}</div><div class="s num">${esc(c.phone)}</div></div>
         <a class="call" href="tel:${esc(telNum(c.phone))}" aria-label="დარეკვა: ${esc(c.name)}">${ICON_PHONE}</a>
-      </div>`).join('')}</div>` : '<div class="empty" style="padding:12px"><div class="e">👥</div>ჯერ არავინ გყავს დამატებული</div>'}
-    <button class="btn ghost" style="margin-top:10px" data-action="contact-add">+ კურიერის დამატება</button>
-  </div>
-
-  <a class="btn outline" href="tel:112" style="margin-bottom:12px">🚑 112 — სასწრაფო დახმარება</a>
-
-  <div class="card soon">
-    <span style="font-size:26px">🗺️</span>
-    <div class="grow"><b>მალე: ახლოს მყოფი კურიერები რუკაზე</b><div class="muted small">ამისთვის რეგისტრაცია დაგვჭირდება. ესაა მეორე ეტაპი.</div></div>
-  </div>`;
+      </div>`).join('')}</div>` : '<div class="empty">დაამატე მეგობარი კურიერები. SOS-ის დროს ყველას ერთად მისწერ.</div>'}
+  </section>`;
 }
 function findLocation(){
   if (!navigator.geolocation) { loc = { state: 'bad' }; if (tab === 'sos') render(); return; }
   loc = { state: 'wait' }; if (tab === 'sos') render();
+  const done = () => { if (tab === 'sos') render(); };
   try {
     navigator.geolocation.getCurrentPosition(
-      p => { loc = { state: 'ok', lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy }; if (tab === 'sos') render(); },
-      () => { loc = { state: 'bad' }; if (tab === 'sos') render(); },
+      p => { loc = { state: 'ok', lat: p.coords.latitude, lng: p.coords.longitude }; done(); loadWeather(); },
+      () => { loc = { state: 'bad' }; done(); },
       { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 });
-  } catch (e) { loc = { state: 'bad' }; if (tab === 'sos') render(); }
+  } catch (e) { loc = { state: 'bad' }; done(); }
 }
 
 /* ============ 4. წიგნები ============ */
 let BOOKS = null;
-fetch('books.json').then(r => r.json()).then(d => { BOOKS = d; if (tab === 'books') render(); }).catch(() => { BOOKS = { works: [], phrases: [] }; if (tab === 'books') render(); });
-function dayOfYear(){ const n = new Date(); return Math.floor((n - new Date(n.getFullYear(), 0, 0)) / 864e5); }
-function phrase(){
-  const P = BOOKS.phrases; return P[(dayOfYear() + S.phraseShift) % P.length];
-}
+fetch('books.json').then(r => r.json()).then(d => { BOOKS = d; if (tab === 'books') render(); })
+  .catch(() => { BOOKS = { works: [], phrases: [] }; if (tab === 'books') render(); });
+const dayOfYear = () => { const n = new Date(); return Math.floor((n - new Date(n.getFullYear(), 0, 0)) / 864e5); };
+const phrase = () => BOOKS.phrases[(dayOfYear() + S.phraseShift) % BOOKS.phrases.length];
 function workMinutes(w){
   const txt = w.k === 'poem' ? w.s.flat().join(' ') : w.c.map(c => c.p.join(' ')).join(' ');
   return Math.max(1, Math.round(txt.split(/\s+/).length / 160));
 }
 function viewBooks(){
-  if (!BOOKS) return '<div class="empty"><div class="e">📖</div>იტვირთება…</div>';
+  if (!BOOKS) return '<div class="empty">იტვირთება…</div>';
   const ph = BOOKS.phrases.length ? phrase() : null;
-  const last = BOOKS.works.find(w => w.id === S.last);
   return `
-  ${ph ? `<div class="card quote">
-    <div class="muted small" style="font-weight:700">✨ დღის ფრაზა</div>
+  ${ph ? `<section class="card quote">
+    <div class="row"><div class="grow lbl">✨ დღის ფრაზა</div>
+      <button class="qb" data-action="phrase-next" aria-label="სხვა ფრაზა">↻</button>
+      <button class="qb" data-action="phrase-copy" aria-label="კოპირება">⧉</button></div>
     <div class="q">„${esc(ph.t)}“</div>
     <div class="a">— ${esc(ph.a)}</div>
-    <div class="btn-row" style="margin-top:12px">
-      <button class="btn" style="min-height:46px" data-action="phrase-next">↻ სხვა ფრაზა</button>
-      <button class="btn" style="min-height:46px" data-action="phrase-copy">⧉ კოპირება</button>
-    </div>
-  </div>` : ''}
-  ${last ? `<div class="card work" data-action="open-work" data-id="${last.id}" style="border-color:var(--accent)">
-      <div class="ic">▶</div><div class="grow"><div class="muted small">გააგრძელე კითხვა</div><div class="ttl">${esc(last.t)}</div></div></div>` : ''}
-  <h2 class="page" style="margin-top:14px">ქართული ლიტერატურა</h2>
-  <p class="lead">მოკლე ლექსები და მოთხრობა — შეკვეთებს შორის წასაკითხად.</p>
+  </section>` : ''}
+  <div class="page-h" style="margin-top:12px"><h2>წასაკითხი</h2></div>
+  <section class="card"><div class="rows">
   ${BOOKS.works.map(w => `
-    <div class="card work" data-action="open-work" data-id="${w.id}">
-      <div class="ic">${esc(w.a.charAt(0))}</div>
-      <div class="grow"><div class="ttl">${esc(w.t)}</div><div class="muted small">${esc(w.a)} · ${w.k === 'poem' ? 'ლექსი' : 'მოთხრობა'} · ${workMinutes(w)} წთ</div></div>
+    <div class="r" data-action="open-work" data-id="${w.id}">
+      <div class="e-ic" style="font-weight:800;color:var(--accent)">${esc(w.a.charAt(0))}</div>
+      <div class="grow"><div class="t">${esc(w.t)}${S.last === w.id ? ' <span class="pill" style="font-size:11px;padding:2px 7px">გაგრძელება</span>' : ''}</div>
+        <div class="s">${esc(w.a)} · ${w.k === 'poem' ? 'ლექსი' : 'მოთხრობა'} · ${workMinutes(w)} წთ</div></div>
       <span class="muted">›</span>
     </div>`).join('')}
+  </div></section>
   <div class="src">ტექსტები: <a href="https://ka.wikisource.org" target="_blank" rel="noopener">ვიკიწყარო</a></div>`;
 }
-let readerWork = null;
 function openWork(id){
   const w = BOOKS.works.find(x => x.id === id); if (!w) return;
-  readerWork = w; S.last = id; save();
-  const R = $('#reader');
+  S.last = id; save();
   const body = w.k === 'poem'
     ? w.s.map(st => `<div class="stanza">${st.map(esc).join('<br>')}</div>`).join('')
     : w.c.map(c => `<h3>${esc(c.t)}</h3>${c.p.map(p => `<p>${esc(p)}</p>`).join('')}`).join('');
+  const R = $('#reader');
   R.innerHTML = `
     <div class="r-top">
       <button class="icon-btn" data-action="close-reader" aria-label="უკან">←</button>
-      <div class="ttl">${esc(w.t)}</div>
-      <button class="icon-btn" data-action="font-dec" aria-label="ასოს დაპატარავება">A−</button>
-      <button class="icon-btn" data-action="font-inc" aria-label="ასოს გადიდება">A+</button>
+      <div class="t">${esc(w.t)}</div>
+      <button class="icon-btn" data-action="font-dec" aria-label="ასო პატარა">A−</button>
+      <button class="icon-btn" data-action="font-inc" aria-label="ასო დიდი">A+</button>
     </div>
     <div class="r-body" id="r-body"><div class="r-inner" id="r-inner" style="font-size:${S.font}px">
       <h1>${esc(w.t)}</h1><div class="by">${esc(w.a)}${w.y ? ' · ' + esc(w.y) : ''}</div>
-      ${body}
-      <div class="r-end">— დასასრული —</div>
+      ${body}<div class="r-end">— დასასრული —</div>
     </div></div>`;
   R.hidden = false; document.body.style.overflow = 'hidden';
   const rb = $('#r-body');
@@ -642,107 +551,107 @@ function openWork(id){
   let t; rb.addEventListener('scroll', () => { clearTimeout(t); t = setTimeout(() => {
     const max = rb.scrollHeight - rb.clientHeight; S.read[id] = max > 0 ? rb.scrollTop / max : 0; save(); }, 300); });
 }
-function closeReader(){ $('#reader').hidden = true; document.body.style.overflow = ''; readerWork = null; if (tab === 'books') render(); }
+function closeReader(){ $('#reader').hidden = true; document.body.style.overflow = ''; if (tab === 'books') render(); }
 
 /* ============ 5. სამუშაო ============ */
-let jobType = 'vac';
+let jobType = 'once';
+const JOB_SITES = [['jobs.ge', 'https://jobs.ge'], ['hr.ge', 'https://www.hr.ge'], ['ss.ge — ვაკანსიები', 'https://jobs.ss.ge']];
 function viewJobs(){
   const list = S.jobs.filter(j => j.type === jobType);
   return `
-  <h2 class="page">სამუშაო</h2>
-  <p class="lead">ვაკანსიები და ერთჯერადი საქმეები კურიერებისთვის.</p>
+  <div class="page-h"><h2>სამუშაო</h2><button class="add" data-action="job-add">+ დამატება</button></div>
   <div class="seg">
-    <button class="${jobType === 'vac' ? 'on' : ''}" data-action="job-type" data-v="vac">💼 ვაკანსიები</button>
     <button class="${jobType === 'once' ? 'on' : ''}" data-action="job-type" data-v="once">⚡ ერთჯერადი</button>
+    <button class="${jobType === 'vac' ? 'on' : ''}" data-action="job-type" data-v="vac">💼 ვაკანსია</button>
   </div>
-  ${list.length ? list.map(j => `
-    <div class="card job" data-action="job-edit" data-id="${j.id}">
-      <div class="row"><div class="grow ttl">${esc(j.title)}${j.sample ? '<span class="tag">ნიმუში</span>' : ''}</div><div class="pay">${esc(j.pay)}</div></div>
-      <div class="meta">${j.place ? `<span>📍 ${esc(j.place)}</span>` : ''}${j.time ? `<span>🕒 ${esc(j.time)}</span>` : ''}</div>
-      ${j.note ? `<div class="note" style="margin:-4px 0 10px">${esc(j.note)}</div>` : ''}
-      ${j.phone ? `<a class="btn go" href="tel:${esc(telNum(j.phone))}">${ICON_PHONE.replace('<svg', '<svg width="20" height="20"')} დარეკვა · <span class="num">${esc(j.phone)}</span></a>` : ''}
-    </div>`).join('') : `<div class="empty"><div class="e">${jobType === 'vac' ? '💼' : '⚡'}</div>ჯერ არაფერია</div>`}
-  <button class="btn primary" data-action="job-add">+ განცხადების დამატება</button>
-  <p class="muted small" style="text-align:center;margin-top:10px">მეორე ეტაპზე განცხადებებს ყველა კურიერი ერთად დაინახავს.</p>`;
+  <section class="card">
+    ${list.length ? `<div class="rows">${list.map(j => `
+      <div class="r" data-action="job-edit" data-id="${j.id}">
+        <div class="grow"><div class="t">${esc(j.title)}</div><div class="s">${esc([j.place, j.time].filter(Boolean).join(' · '))}</div></div>
+        <span class="pill green">${esc(j.pay)}</span>
+        ${j.phone ? `<a class="call" href="tel:${esc(telNum(j.phone))}" aria-label="დარეკვა">${ICON_PHONE}</a>` : ''}
+      </div>`).join('')}</div>`
+      : `<div class="empty">${jobType === 'once' ? 'ერთჯერადი საქმე ჯერ არ არის.' : 'ვაკანსია ჯერ არ არის.'} დაამატე პირველი.</div>`}
+  </section>
+  <section class="card">
+    <div class="head"><h3>სად ვეძებო სამუშაო</h3></div>
+    <div class="rows">${JOB_SITES.map(([n, u]) => `
+      <a class="r" href="${u}" target="_blank" rel="noopener"><div class="e-ic">🔎</div><div class="grow t">${n}</div><span class="muted">↗</span></a>`).join('')}</div>
+  </section>`;
 }
 
-/* ============ ფორმები (ქვედა ფანჯარა) ============ */
+/* ============ ფორმები ============ */
 function openSheet(html){
   const w = $('#sheet');
   w.innerHTML = `<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${html}</div>`;
-  w.hidden = false;
-  w.onclick = e => { if (e.target === w) closeSheet(); };
+  w.hidden = false; w.onclick = e => { if (e.target === w) closeSheet(); };
 }
 function closeSheet(){ const w = $('#sheet'); w.hidden = true; w.innerHTML = ''; }
 function openForm({ title, fields, data = {}, onSave, onDelete, saveLabel = 'შენახვა' }){
   const f = fields.map(x => {
-    const v = data[x.key] ?? x.value ?? '';
+    const v = data[x.key] ?? '';
     let input;
-    if (x.type === 'select') input = `<select class="f" name="${x.key}" id="ff-${x.key}">${x.options.map(([ov, ol]) => `<option value="${ov}" ${String(ov) === String(v) ? 'selected' : ''}>${ol}</option>`).join('')}</select>`;
-    else if (x.type === 'textarea') input = `<textarea class="f" name="${x.key}" id="ff-${x.key}" placeholder="${esc(x.ph || '')}">${esc(v)}</textarea>`;
-    else input = `<input class="f ${x.type === 'number' || x.type === 'tel' ? 'num' : ''}" name="${x.key}" id="ff-${x.key}" type="${x.type || 'text'}" ${x.type === 'number' ? 'inputmode="decimal" step="any" min="0"' : ''} placeholder="${esc(x.ph || '')}" value="${esc(v)}">`;
-    return `<div class="field"><label for="ff-${x.key}">${x.label}${x.optional ? ' <span style="font-weight:400">(არასავალდებულო)</span>' : ''}</label>${input}${x.help ? `<div class="muted small" style="margin:6px 2px 0">${x.help}</div>` : ''}</div>`;
+    if (x.type === 'select') input = `<select class="f" id="ff-${x.key}">${x.options.map(([ov, ol]) => `<option value="${ov}" ${String(ov) === String(v) ? 'selected' : ''}>${ol}</option>`).join('')}</select>`;
+    else if (x.type === 'textarea') input = `<textarea class="f" id="ff-${x.key}" placeholder="${esc(x.ph || '')}">${esc(v)}</textarea>`;
+    else input = `<input class="f" id="ff-${x.key}" type="${x.type || 'text'}" ${x.type === 'number' ? 'inputmode="decimal" step="any" min="0"' : ''} placeholder="${esc(x.ph || '')}" value="${esc(v)}">`;
+    return `<div class="field"><label for="ff-${x.key}">${x.label}</label>${input}</div>`;
   }).join('');
   openSheet(`<h3>${title}</h3><form id="sf">${f}
     <div class="btn-row">${onDelete ? '<button type="button" class="btn" id="sf-del" style="flex:0 0 auto;color:var(--red)">წაშლა</button>' : ''}
     <button type="submit" class="btn primary">${saveLabel}</button></div>
-    <button type="button" class="btn ghost" style="margin-top:8px;border:0" id="sf-x">გაუქმება</button></form>`);
+    <button type="button" class="btn plain" id="sf-x">გაუქმება</button></form>`);
   $('#sf-x').onclick = closeSheet;
-  if (onDelete) $('#sf-del').onclick = () => openConfirm('ნამდვილად წავშალო?', 'კი, წაშალე', () => { onDelete(); });
+  if (onDelete) $('#sf-del').onclick = () => openConfirm('წავშალო?', () => onDelete());
   $('#sf').onsubmit = e => {
     e.preventDefault();
     const out = {};
     for (const x of fields) {
-      let v = $('#ff-' + x.key).value.trim();
+      const el = $('#ff-' + x.key); let v = el.value.trim();
       if (x.type === 'number' && v !== '') v = Math.max(0, parseFloat(v.replace(',', '.')) || 0);
-      if (!x.optional && (v === '' || v === 0 && x.positive)) { const el = $('#ff-' + x.key); el.focus(); el.style.borderColor = 'var(--red)'; toast('შეავსე: ' + x.label); return; }
+      if (x.req && (v === '' || v === 0)) { el.focus(); el.style.borderColor = 'var(--red)'; toast('შეავსე: ' + x.label); return; }
       out[x.key] = v;
     }
     onSave(out); closeSheet(); save(); render();
   };
-  setTimeout(() => { const first = $('#sf .f'); if (first && !data[fields[0].key]) first.focus(); }, 250);
 }
-function openConfirm(text, yes, onYes){
-  openSheet(`<h3>${text}</h3><div class="btn-row"><button class="btn" id="c-no">არა</button><button class="btn danger" id="c-yes">${yes}</button></div>`);
+function openConfirm(text, onYes){
+  openSheet(`<h3>${text}</h3><div class="btn-row"><button class="btn" id="c-no">არა</button><button class="btn red" id="c-yes">კი, წაშალე</button></div>`);
   $('#c-no').onclick = closeSheet;
   $('#c-yes').onclick = () => { onYes(); closeSheet(); save(); render(); };
 }
-
 const EXP_FIELDS = [
-  { key: 'name', label: 'რა არის?', ph: 'მაგ. ქირა, ბანკი, ვალი' },
-  { key: 'amount', label: 'თანხა (₾)', type: 'number', ph: '0', positive: true },
-  { key: 'due', label: 'როდემდე უნდა გადავიხადო?', type: 'date', optional: true, help: 'თუ თარიღს ჩაწერ, გეტყვის დღეში რამდენი საათი იმუშაო.' },
+  { key: 'name', label: 'რა არის?', ph: 'მაგ. ქირა, ბანკი, ვალი', req: true },
+  { key: 'amount', label: 'თანხა (₾)', type: 'number', ph: '0', req: true },
+  { key: 'due', label: 'როდემდე? (თუ გინდა)', type: 'date' },
 ];
 const DISC_FIELDS = [
-  { key: 'name', label: 'ადგილის სახელი', ph: 'მაგ. შაურმის ბარი' },
-  { key: 'cat', label: 'კატეგორია', type: 'select', options: Object.entries(CATS).map(([k, [i, l]]) => [k, `${i} ${l}`]) },
-  { key: 'pct', label: 'ფასდაკლება (%)', type: 'number', optional: true, ph: 'თუ არ იცი, დატოვე ცარიელი' },
-  { key: 'addr', label: 'მისამართი', optional: true, ph: 'ქუჩა, უბანი' },
-  { key: 'note', label: 'შენიშვნა', type: 'textarea', optional: true, ph: 'მაგ. მოითხოვე კურიერის ბარათი' },
+  { key: 'name', label: 'სად?', ph: 'ადგილის სახელი', req: true },
+  { key: 'cat', label: 'რა ტიპის?', type: 'select', options: Object.entries(CATS).map(([k, [i, l]]) => [k, `${i} ${l}`]) },
+  { key: 'pct', label: 'რამდენი %? (თუ არ იცი, დატოვე)', type: 'number', ph: '10' },
+  { key: 'addr', label: 'მისამართი', ph: 'ქუჩა, უბანი' },
+  { key: 'note', label: 'როგორ მივიღო?', type: 'textarea', ph: 'მაგ. აჩვენე კურიერის აპი' },
 ];
 const JOB_FIELDS = [
-  { key: 'type', label: 'ტიპი', type: 'select', options: [['vac', '💼 ვაკანსია'], ['once', '⚡ ერთჯერადი საქმე']] },
-  { key: 'title', label: 'რა სამუშაოა?', ph: 'მაგ. ამანათის მიტანა' },
-  { key: 'pay', label: 'ანაზღაურება', ph: 'მაგ. 40 ₾' },
-  { key: 'place', label: 'სად?', optional: true, ph: 'უბანი, ქალაქი' },
-  { key: 'time', label: 'როდის?', optional: true, ph: 'მაგ. დღეს, 18:00-მდე' },
-  { key: 'phone', label: 'ტელეფონი', type: 'tel', optional: true, ph: '5XX XX XX XX' },
-  { key: 'note', label: 'დამატებით', type: 'textarea', optional: true },
+  { key: 'type', label: 'ტიპი', type: 'select', options: [['once', '⚡ ერთჯერადი საქმე'], ['vac', '💼 ვაკანსია']] },
+  { key: 'title', label: 'რა საქმეა?', ph: 'მაგ. ამანათის მიტანა', req: true },
+  { key: 'pay', label: 'ანაზღაურება', ph: 'მაგ. 40 ₾', req: true },
+  { key: 'place', label: 'სად?', ph: 'უბანი' },
+  { key: 'time', label: 'როდის?', ph: 'მაგ. დღეს 18:00-მდე' },
+  { key: 'phone', label: 'ტელეფონი', type: 'tel', ph: '5XX XX XX XX' },
 ];
 const CONTACT_FIELDS = [
-  { key: 'name', label: 'სახელი', ph: 'მაგ. გიორგი' },
-  { key: 'phone', label: 'ტელეფონი', type: 'tel', ph: '5XX XX XX XX' },
+  { key: 'name', label: 'სახელი', ph: 'მაგ. გიორგი', req: true },
+  { key: 'phone', label: 'ტელეფონი', type: 'tel', ph: '5XX XX XX XX', req: true },
 ];
 function openSettings(){
   openSheet(`<h3>პარამეტრები</h3>
-    <div class="field"><label for="st-name">ჩემი სახელი <span style="font-weight:400">(SOS შეტყობინებაში ჩაიწერება)</span></label><input class="f" id="st-name" value="${esc(S.name)}" placeholder="მაგ. ლევანი"></div>
-    <div class="field"><label for="st-goal">დღის მიზანი (საათი)</label><input class="f num" id="st-goal" type="number" inputmode="decimal" min="1" max="24" value="${S.goal}"></div>
+    <div class="field"><label for="st-name">ჩემი სახელი (SOS-ში ჩაიწერება)</label><input class="f" id="st-name" value="${esc(S.name)}" placeholder="მაგ. ლევანი"></div>
+    <div class="field"><label for="st-goal">დღის მიზანი (საათი)</label><input class="f" id="st-goal" type="number" inputmode="decimal" min="1" max="24" value="${S.goal}"></div>
     <div class="field"><label>ფონი</label><div class="switch">
       <button data-theme-set="dark" class="${S.theme === 'dark' ? 'on' : ''}">🌙 მუქი</button>
       <button data-theme-set="light" class="${S.theme === 'light' ? 'on' : ''}">☀️ ნათელი</button></div></div>
-    <button class="btn primary" id="st-save">შენახვა</button>
-    <button class="btn ghost" style="margin-top:10px;color:var(--red);border-color:color-mix(in srgb,var(--red) 40%,var(--line))" id="st-reset">ყველაფრის წაშლა</button>
-    <p class="muted small" style="text-align:center;margin:14px 0 0">ყველა მონაცემი ინახება მხოლოდ ამ ტელეფონში.</p>`);
+    <div class="btn-row"><button class="btn primary" id="st-save">შენახვა</button></div>
+    <button class="btn plain" style="color:var(--red)" id="st-reset">ყველაფრის წაშლა</button>`);
   document.querySelectorAll('[data-theme-set]').forEach(b => b.onclick = () => {
     S.theme = b.dataset.themeSet; applyTheme(); save();
     document.querySelectorAll('[data-theme-set]').forEach(x => x.classList.toggle('on', x === b));
@@ -752,52 +661,51 @@ function openSettings(){
     const g = parseFloat($('#st-goal').value); if (g > 0 && g <= 24) S.goal = g;
     save(); closeSheet(); render(); toast('შენახულია');
   };
-  $('#st-reset').onclick = () => openConfirm('წავშალო ყველა ჩანაწერი? ეს ვერ დაბრუნდება.', 'კი, წაშალე', () => {
-    const theme = S.theme; S = DEFAULT(); S.theme = theme; S.expenses = []; save(); toast('ყველაფერი წაიშალა');
+  $('#st-reset').onclick = () => openConfirm('წავშალო ყველა ჩანაწერი?', () => {
+    const theme = S.theme; S = DEFAULT(); S.theme = theme; S.expenses = []; toast('წაიშალა');
   });
 }
 function applyTheme(){
   document.documentElement.dataset.theme = S.theme;
-  document.querySelector('meta[name=theme-color]').content = S.theme === 'light' ? '#F4F5F7' : '#0E1014';
+  $('meta[name=theme-color]').content = S.theme === 'light' ? '#F3F4F6' : '#0E1014';
 }
 
 /* ============ ღილაკები ============ */
 document.addEventListener('click', e => {
-  const tabBtn = e.target.closest('.tab');
-  if (tabBtn) { go(tabBtn.dataset.tab); return; }
+  const tb = e.target.closest('.tab'); if (tb) { go(tb.dataset.tab); return; }
   const el = e.target.closest('[data-action]'); if (!el) return;
-  const a = el.dataset.action, id = el.dataset.id;
-  const find = (arr) => arr.find(x => x.id === id);
+  const a = el.dataset.action, id = el.dataset.id, find = arr => arr.find(x => x.id === id);
   switch (a) {
     case 'open-settings': openSettings(); break;
     case 'rate-dec': setRate(Math.max(0, (+S.rate || 0) - 1)); $('#rate').value = S.rate; break;
     case 'rate-inc': setRate((+S.rate || 0) + 1); $('#rate').value = S.rate; break;
     case 'shift': toggleShift(); break;
+    case 'rest-ok': if (S.shift) { S.shift.rest = Date.now(); save(); tick(); } break;
     case 'add-time': openForm({ title: 'ნამუშევარი საათების ჩაწერა', saveLabel: 'დამატება',
-        fields: [{ key: 'h', label: 'საათი', type: 'number', ph: '0', optional: true }, { key: 'm', label: 'წუთი', type: 'number', ph: '0', optional: true }],
+        fields: [{ key: 'h', label: 'საათი', type: 'number', ph: '0' }, { key: 'm', label: 'წუთი', type: 'number', ph: '0' }],
         onSave: v => { const min = (+v.h || 0) * 60 + (+v.m || 0); if (min > 0) { addWork(min); toast(`დაემატა ${fmtH(min / 60)}`); } } }); break;
-    case 'edit-goal': openForm({ title: 'დღის მიზანი', data: { goal: S.goal }, fields: [{ key: 'goal', label: 'დღეში რამდენი საათი?', type: 'number', positive: true }],
+    case 'edit-goal': openForm({ title: 'დღის მიზანი', data: { goal: S.goal }, fields: [{ key: 'goal', label: 'დღეში რამდენი საათი?', type: 'number', req: true }],
         onSave: v => { if (v.goal > 0 && v.goal <= 24) S.goal = v.goal; } }); break;
-    case 'exp-add': openForm({ title: 'ახალი ხარჯი', fields: EXP_FIELDS, saveLabel: 'დამატება',
+    case 'exp-add': openForm({ title: 'ახალი ვალი / ხარჯი', fields: EXP_FIELDS, saveLabel: 'დამატება',
         onSave: v => S.expenses.push({ id: uid(), paid: false, ...v }) }); break;
-    case 'exp-edit': { const x = find(S.expenses); if (!x) break; openForm({ title: 'ხარჯის შეცვლა', fields: EXP_FIELDS, data: x,
-        onSave: v => { Object.assign(x, v); delete x.sample; }, onDelete: () => { S.expenses = S.expenses.filter(y => y !== x); } }); break; }
+    case 'exp-edit': { const x = find(S.expenses); if (!x) break; openForm({ title: 'შეცვლა', fields: EXP_FIELDS, data: x,
+        onSave: v => Object.assign(x, v), onDelete: () => { S.expenses = S.expenses.filter(y => y !== x); } }); break; }
     case 'exp-toggle': { const x = find(S.expenses); if (!x) break; x.paid = !x.paid; save(); $('#exp-box').innerHTML = viewExpenses();
         if (x.paid) toast(`✓ ${x.name} — გადახდილია!`); break; }
     case 'disc-cat': discCat = el.dataset.v; render(); break;
     case 'disc-add': openForm({ title: 'ახალი ფასდაკლება', fields: DISC_FIELDS, saveLabel: 'დამატება', data: { cat: discCat === 'all' ? 'food' : discCat },
         onSave: v => S.discounts.unshift({ id: uid(), ...v }) }); break;
-    case 'disc-edit': { const x = find(S.discounts); if (!x) break; openForm({ title: 'ფასდაკლების შეცვლა', fields: DISC_FIELDS, data: x,
-        onSave: v => { Object.assign(x, v); delete x.sample; }, onDelete: () => { S.discounts = S.discounts.filter(y => y !== x); } }); break; }
-    case 'sos-prob': sosProb = el.dataset.v; render(); break;
+    case 'disc-edit': { const x = find(S.discounts); if (!x) break; openForm({ title: 'ფასდაკლება', fields: DISC_FIELDS, data: x,
+        onSave: v => Object.assign(x, v), onDelete: () => { S.discounts = S.discounts.filter(y => y !== x); } }); break; }
+    case 'sos-prob': sosProb = sosProb === el.dataset.v ? null : el.dataset.v; render(); break;
     case 'sos-loc': findLocation(); break;
     case 'sos-sms': if (!S.contacts.length) { e.preventDefault(); toast('ჯერ დაამატე კურიერები'); } else toast('იხსნება SMS…'); break;
     case 'contact-add': openForm({ title: 'კურიერის დამატება', fields: CONTACT_FIELDS, saveLabel: 'დამატება',
         onSave: v => S.contacts.push({ id: uid(), ...v }) }); break;
-    case 'contact-edit': { if (e.target.closest('.call')) break; const x = find(S.contacts); if (!x) break; openForm({ title: 'კურიერის შეცვლა', fields: CONTACT_FIELDS, data: x,
+    case 'contact-edit': { if (e.target.closest('.call')) break; const x = find(S.contacts); if (!x) break; openForm({ title: 'კურიერი', fields: CONTACT_FIELDS, data: x,
         onSave: v => Object.assign(x, v), onDelete: () => { S.contacts = S.contacts.filter(y => y !== x); } }); break; }
     case 'phrase-next': S.phraseShift++; save(); render(); break;
-    case 'phrase-copy': { const p = phrase(); const txt = `„${p.t}“ — ${p.a}`;
+    case 'phrase-copy': { const p = phrase(), txt = `„${p.t}“ — ${p.a}`;
         try { navigator.clipboard.writeText(txt).then(() => toast('დაკოპირდა ✓'), () => toast('ვერ დაკოპირდა')); } catch (err) { toast('ვერ დაკოპირდა'); } break; }
     case 'open-work': openWork(id); break;
     case 'close-reader': closeReader(); break;
@@ -806,38 +714,33 @@ document.addEventListener('click', e => {
     case 'job-type': jobType = el.dataset.v; render(); break;
     case 'job-add': openForm({ title: 'ახალი განცხადება', fields: JOB_FIELDS, saveLabel: 'დამატება', data: { type: jobType },
         onSave: v => { S.jobs.unshift({ id: uid(), ...v }); jobType = v.type; } }); break;
-    case 'job-edit': { if (e.target.closest('a')) break; const x = find(S.jobs); if (!x) break; openForm({ title: 'განცხადების შეცვლა', fields: JOB_FIELDS, data: x,
-        onSave: v => { Object.assign(x, v); delete x.sample; jobType = v.type; }, onDelete: () => { S.jobs = S.jobs.filter(y => y !== x); } }); break; }
+    case 'job-edit': { if (e.target.closest('.call')) break; const x = find(S.jobs); if (!x) break; openForm({ title: 'განცხადება', fields: JOB_FIELDS, data: x,
+        onSave: v => { Object.assign(x, v); jobType = v.type; }, onDelete: () => { S.jobs = S.jobs.filter(y => y !== x); } }); break; }
   }
 });
-
-/* ციფრების ველები — გადახატვის გარეშე, რომ კლავიატურა არ დაიხუროს */
 function setRate(v){
   S.rate = v; save();
   if ($('#exp-box')) $('#exp-box').innerHTML = viewExpenses();
   updateCalc(); tick();
 }
 function updateCalc(){
-  const r = +S.rate || 0, h = $('#c-h'), m = $('#c-m'); if (!h) return;
-  const hv = parseFloat(h.value || h.placeholder), mv = parseFloat(m.value || m.placeholder);
-  $('#c-h-r').textContent = '→ ' + money(hv * r);
-  $('#c-m-r').textContent = '→ ' + (r ? fmtH(mv / r) : '—');
+  const h = $('#c-h'); if (!h) return;
+  $('#c-h-r').textContent = money(parseFloat(h.value || h.placeholder) * (+S.rate || 0));
 }
 document.addEventListener('input', e => {
   const id = e.target.id;
   if (id === 'rate') { const v = parseFloat(e.target.value.replace(',', '.')); if (v >= 0) setRate(v); }
-  if (id === 'c-h' || id === 'c-m') updateCalc();
+  if (id === 'c-h') { calcH = e.target.value; updateCalc(); }
   if (id === 'fuel') { todayLog().fuel = Math.max(0, parseFloat(e.target.value) || 0); save(); tick(); }
 });
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { if (!$('#sheet').hidden) closeSheet(); else if (!$('#reader').hidden) closeReader(); }
 });
 
-/* დაწყება */
 (function start(){
   const d = new Date();
   $('#today-label').textContent = `${DAYS[d.getDay()]}, ${d.getDate()} ${MONTHS[d.getMonth()]}`;
-  applyTheme(); go(tab);
+  applyTheme(); go(tab); loadWeather(); setInterval(loadWeather, 30 * 6e4);
 })();
 </script>
 </body>
